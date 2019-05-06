@@ -12,10 +12,14 @@ massive(CONNECTION_STRING)
 .then(db => {
     app.set('db', db)
     app.listen(SERVER_PORT, () => {
-        console.log(db.listTables())
         console.log(`Listening on port ${SERVER_PORT}`)
     })
 })
 
 app.post('/api/auth/register', controller.register)
 app.post('/api/auth/login', controller.login)
+
+app.get('/api/posts/:id', controller.getPosts)
+// app.get('/api/posts?', controller.getPosts)
+// app.get('/api/posts', controller.getPosts)
+// app.get('/api/posts', controller.getPosts)

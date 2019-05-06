@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import {credential} from '../../ducks/reducer'
+import {updateUser} from '../../ducks/reducer'
 
 class Auth extends Component {
     constructor(props){
@@ -17,17 +17,19 @@ class Auth extends Component {
             [name]: value
         })
     }
-    login = async () => {
+    login = () => {
         const {username, password} = this.state
-        let data = await axios.post('/api/auth/login', {username, password}).then(res => res.data)
-        this.props.credential(data)
+        axios.post('/api/auth/login', {username, password}).then(res => {
+            this.props.updateUser(res.data)
+            this.props.history.push('/dashboard')
+        })
     }
-    register = async () => {
+    register = () => {
         const {username, password} = this.state
-        let data = await axios.post('/api/auth/register', {username, password}).then(res => res.data)
-        this.props.credential(data)
-        data.redirect('/dashboard')
-            
+        axios.post('/api/auth/register', {username, password}).then(res => {
+            this.props.updateUser(res.data)
+            this.props.history.push('/dashboard')
+        })
     }
     render(){
         console.log(this.state)
@@ -47,5 +49,5 @@ class Auth extends Component {
 // const mapState = (reduxState) => {
 //     return reduxState
 // }
-export default connect(null, {credential})(Auth)
+export default connect(null, {updateUser})(Auth)
 

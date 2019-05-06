@@ -1,16 +1,16 @@
 const initialState = {
     username: '',
     id: null,
-    profile_picture: ''
+    profile_pic: ''
 }
 
 const USER_CREDENITAL = 'USER_CREDENITAL'
 
-export const credential = (req) => {
-    const {username, id, profile_picture} = req
+export const updateUser = (req) => {
+    const {username, id, profile_pic} = req
     return {
         type: USER_CREDENITAL,
-        payload: {username, id, profile_picture}
+        payload: {username, id, profile_pic}
     }
 }
 

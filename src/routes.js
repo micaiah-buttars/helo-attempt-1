@@ -7,18 +7,11 @@ import Post from './components/Post/Post'
 
 import {Switch, Route} from 'react-router-dom'
 
-export default class Routes extends Component {
-
-    render(){
-        return(
+export default (
             <Switch>
                 <Route component={Auth} exact path='/'/>
                 <Route component={Dashboard} path='/dashboard'/>
                 <Route component={Form} path='/new'/>
                 <Route component={Post} path='/post/:postid'/>
             </Switch>
-
-        )
-    }
-
-}
+)

@@ -1,31 +1,33 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {connect} from 'react-redux'
+import {withRouter, Link} from 'react-router-dom'
 
 import Home from './Home/Home'
 import NewPost from './NewPost/NewPost'
 import Logout from './Logout/Logout'
 
-class Nav extends Component {
-    constructor(props){
-        super(props)
-    }
-    render(){
-        console.log(this.props)
-        return (
+function Nav(props) {
+    console.log(props)
+    if(props.location.pathname !== '/'){
+        return(
             <div>
-                <img src={this.props.profile_picture}></img>
-                <span>{this.props.username}</span>
+                <img src={props.profile_pic}></img>
+                <span>{props.username}</span>
                 <Home />
                 <NewPost />
                 <Logout />
             </div>
 
         )
+    } else {
+        return null
     }
-}
+
+        
+    }
 const mapState = (reduxState) => {
     return reduxState
 }
-export default connect(mapState)(Nav)
+export default withRouter(connect(mapState)(Nav))
 
 

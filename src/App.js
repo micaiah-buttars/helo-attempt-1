@@ -1,18 +1,14 @@
 import React from 'react';
 import './App.css';
 
-import Routes from './routes'
-
+import routes from './routes'
 import Nav from './components/Nav/Nav'
 
 function App() {
-  console.log(window)
   return (
-    <div>
-      
+    <div className='App'>
       <Nav />
-
-      <Routes />
+      {routes}
     </div>
   );
 }
