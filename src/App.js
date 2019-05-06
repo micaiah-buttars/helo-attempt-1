@@ -1,21 +1,18 @@
 import React from 'react';
 import './App.css';
 
-import Auth from './components/Auth/Auth'
-import Dashboard from './components/Dashboard/Dashboard'
-import Form from './components/Form/Form'
+import Routes from './routes'
+
 import Nav from './components/Nav/Nav'
-import Post from './components/Post/Post'
 
 function App() {
+  console.log(window)
   return (
     <div>
+      
       <Nav />
-      <Auth />
-      <Dashboard />
-      <Form />
-      <Post />
 
+      <Routes />
     </div>
   );
 }
